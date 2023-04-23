@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Centered Button with Background Color Change and Counter</title>
+    <style>
+      /* Center the button and counter */
+      .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: black;
+        flex-direction: column;
+      }
+      
+      /* Style the button */
+      button {
+        padding: 16px 32px;
+        border: none;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        transition: background-color 0.5s ease;
+      }
+      
+      /* Change button background color on hover */
+      button:hover {
+        background-color: blue;
+      }
+      
+      /* Style the counter */
+      #counter {
+        color: white;
+        font-size: 36px;
+        margin-top: 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="center">
+      <button id="click-me-button">Click me</button>
+      <div id="counter">0</div>
+    </div>
+    
+    <script>
+      // Get the button and counter elements
+      const button = document.getElementById('click-me-button');
+      const counter = document.getElementById('counter');
+      
+      // Get the count value from local storage, or default to 0
+      let count = parseInt(localStorage.getItem('count')) || 0;
+      
+      // Update the counter text with the initial count value
+      counter.textContent = count;
+      
+      // Add a click event listener to the button
+      button.addEventListener('click', () => {
+        // Increase the count value by 1
+        count++;
+        
+        // Update the counter text
+        counter.textContent = count;
+        
+        // Store the count value in local storage
+        localStorage.setItem('count', count);
+      });
+    </script>
+  </body>
+</html>
