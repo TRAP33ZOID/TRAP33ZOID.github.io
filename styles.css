@@ -1,0 +1,295 @@
+body,
+html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    /* Prevent scrolling */
+}
+
+#revenueTable,
+#expensesTable,
+#profitTable,
+#needsTable {
+    width: 100%;
+}
+
+.container {
+    padding: 1%;
+    /* Reduced padding */
+    height: 94%;
+    /* Adjusted for reduced padding */
+    display: flex;
+    gap: 20px;
+    /* Added gap between halves */
+}
+
+.assumptions-half,
+.graphs-half,
+.tabs li {
+    border-radius: 20px;
+    /* Circular edges */
+}
+
+#widgets-sub-tabs li:first-child {
+    background-color: blue;
+    color: white;
+    /* Change text color to improve readability */
+}
+
+/* Assumption 2 to Green */
+#widgets-sub-tabs li:nth-child(2) {
+    background-color: green;
+    color: white;
+    /* Improving readability */
+}
+
+/* Assumption 3 to Orange */
+#widgets-sub-tabs li:nth-child(3) {
+    background-color: orange;
+    color: white;
+    /* Improving readability */
+}
+
+.assumptions-half {
+    flex: 4;
+    /* Takes up 60% of the space */
+    padding: 10px;
+    overflow: auto;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+}
+
+.graphs-half {
+    flex: 6;
+    /* Takes up 40% of the space */
+    padding: 10px;
+    overflow: auto;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+}
+
+.tab-content {
+    border: 1px solid #ccc;
+    padding: 10px;
+    height: calc(100% - 90px);
+    /* Adjust height based on the height of your tabs */
+    display: none;
+    overflow: auto;
+    /* Enable scrolling for content overflow */
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.tabs {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    height: 30px;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    border-radius: 20px;
+    /* Circular edges */
+    overflow: hidden;
+    /* Hide overflowed tabs */
+}
+
+.tabs li {
+    padding: 5px 10px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    white-space: nowrap;
+    /* Prevent tab name wrapping */
+    overflow: hidden;
+    /* Hide overflowed text */
+    text-overflow: ellipsis;
+    /* Show ellipsis for overflowed text */
+    border-radius: 20px;
+    /* Circular edges */
+}
+
+.tabs li.active {
+    background-color: #e0e0e0;
+    /* Darker background for active tabs */
+}
+
+.sub-tabs {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    border-radius: 20px;
+    /* Circular edges */
+    overflow: hidden;
+    /* Hide overflowed sub-tabs */
+}
+
+.sub-tabs li {
+    padding: 5px 10px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    white-space: nowrap;
+    /* Prevent tab name wrapping */
+    overflow: hidden;
+    /* Hide overflowed text */
+    text-overflow: ellipsis;
+    /* Show ellipsis for overflowed text */
+    border-radius: 20px;
+    /* Circular edges */
+}
+
+.sub-tabs li.active {
+    background-color: #d0d0d0;
+    /* Darker background for active sub-tabs */
+}
+
+#add-tab {
+    cursor: pointer;
+    display: none;
+    /* Hide the '+' tab */
+}
+
+.hidden {
+    display: none;
+}
+
+.tooltip {
+    display: inline-block;
+    position: relative;
+    cursor: help;
+}
+
+.tooltip .tooltip-text {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    /* Position the tooltip text */
+    position: absolute;
+    z-index: 1;
+    bottom: -5px;
+    /* Adjust if needed */
+    left: 105%;
+    /* Adjust so the tooltip appears to the right */
+    margin-left: 0px;
+    /* Fade in tooltip */
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+.assumption-line {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.assumption-line label {
+    margin-right: 5px;
+}
+
+.custom-tooltip {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: grey;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 14px;
+    /* Adjust as needed */
+    cursor: help;
+    margin: 0 8px;
+    /* Add horizontal padding */
+}
+
+.custom-tooltip .tooltip-text {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    /* Adjust padding as needed */
+
+    /* Position adjustments for the tooltip */
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -60px;
+    /* Half of width to center it */
+    /* Fade in effect */
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.custom-tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Short Input Style */
+.short-input {
+    width: 150px;
+    /* Adjust width as needed */
+    padding: 5px;
+    margin-left: 5px;
+}
+
+/* Plus Icon Style */
+.plus-icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: lightgray;
+    cursor: pointer;
+    margin-left: 10PX;
+}
+
+.short-input {
+    width: 100px;
+    /* Adjust the width as needed */
+    padding: 8px;
+    /* Increase padding for better appearance */
+    border: 1px solid #ccc;
+    /* Add border for better visibility */
+    border-radius: 5px;
+    /* Add some border radius for rounded corners */
+    box-sizing: border-box;
+    /* Include padding and border in the element's total width and height */
+    margin-right: 10px;
+}
+
+.expenses-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.expenses-table th,
+.expenses-table td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.expenses-table th {
+    background-color: #f2f2f2;
+}
